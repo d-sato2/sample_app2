@@ -4,7 +4,8 @@ describe User do
 
   before do
     @user = User.new(name: "Example User", email: "user@example.com",
-                     password: "foobar", password_confirmation: "foobar")
+                     password: "foobar", password_confirmation: "foobar",
+                     user_name: "testusername")
   end
   subject { @user }
 
@@ -25,6 +26,7 @@ describe User do
   it { should respond_to(:unfollow!) }
   it { should respond_to(:reverse_relationships) }
   it { should respond_to(:followers) }
+  it { should respond_to(:user_name) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -45,6 +47,16 @@ describe User do
 
   describe "when email is not present" do
     before { @user.email = " " }
+    it { should_not be_valid }
+  end
+
+  describe "when user_name is not present" do
+    before { @user.user_name = " " }
+    it { should_not be_valid }
+  end
+
+  describe "when user_name is too long" do
+    before { @user.user_name = "a" * 21 }
     it { should_not be_valid }
   end
 
