@@ -1,6 +1,11 @@
 class MicropostsController < ApplicationController
+
+  require 'message_handler'
+  include MessageHandler
+
   before_action :signed_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
+  before_action :check_if_direct_message, only: :create
   
   def create
     @micropost = current_user.microposts.build(micropost_params)
@@ -28,4 +33,13 @@ class MicropostsController < ApplicationController
       @micropost = current_user.microposts.find_by(id: params[:id])
       redirect_to root_url if @micropost.nil?
     end
+
+#    def process_direct_message
+#      attr = params.require(:micropost).permit(:content)
+#      @micropost = current_user.microposts.create(attr)
+#      if @micropost.direct_message_format?
+#        direct_message = DirectMessage.new(@micropost.to_direct_message_hash)
+#        redirect_to root_path if direct_message.save
+#      end
+#    end
 end

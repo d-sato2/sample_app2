@@ -28,8 +28,8 @@ class Micropost < ActiveRecord::Base
 
   def extract_in_reply_to
     if match = @@reply_to_regexp.match(content)
-       @user = User.find_by(user_name: match[1])
-      self.in_reply_to = @user #if user
+       user = User.find_by(user_name: match[1])
+      self.in_reply_to_id = user.id #if user
     end
   end
 end

@@ -1,0 +1,14 @@
+<%= render 'direct_messages/menu' %>
+
+<table width="1000">
+  <tr>
+    <th>Sender</th>
+    <th>Message</th>
+  </tr>
+  <% @direct_messages.each do |dm| %>
+    <tr>
+      <td align="center"><%= dm.sender.name %></td>
+      <td align="center"><%= dm.content %></td>
+    </tr>
+  <% end %>
+</table> 

@@ -4,6 +4,15 @@ SampleApp2::Application.routes.draw do
       get :following, :followers
     end
   end
+
+  resources :direct_messages do
+    get :received, :on => :collection
+    ### collectionによって 
+    ### /direct_messages/received(.:format)と
+    ### received_direct_messages_path, received_direct_messages_urlを生成
+    get :sent, :on => :collection
+  end
+
   resources :sessions,   only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
