@@ -1,0 +1,32 @@
+<div class="row">
+  <aside class="span4">
+    <%= render 'direct_messages/menu' %>
+    <%= render 'shared/micropost_form' %>
+    <font size="5" color="#ff0000"><b>
+    ↑direct messageしか送信できないように変更する
+    </b></font>
+  </aside>
+ <div class="span8" style="background-color: #E0F8F7;">
+　 <font size="5" color="#ff0000"><b>
+ 　</b></font>
+   <% @direct_messages.each do |dm| %>
+     <% if dm.recipient_id == current_user.id && dm.sender_id == @user.id then %>
+      <section>
+       <h6><%= dm.sender.name %>@<%= dm.sender.user_name %>(<%= dm.sender.id %>)</h6>
+       <h6 class="timestamp">
+         Posted <%= time_ago_in_words(dm.created_at) %> ago.
+       </h6>
+       <p class="left_balloon"><%= dm.content %></p>
+      </section>
+     <% elsif dm.recipient_id == @user.id && dm.sender_id == current_user.id then %>
+      <section>
+        <h6 Align="right"><%= dm.sender.name %>@<%= dm.sender.user_name %>(<%= dm.sender.id %>)</h6>
+        <h6 Align="right" class="timestamp">
+          Posted <%= time_ago_in_words(dm.created_at) %> ago.
+        </h6>
+        <p class="right_balloon"><%= dm.content %></p>
+      </section>
+     <% end %>
+   <% end %>
+ </div>
+</div>

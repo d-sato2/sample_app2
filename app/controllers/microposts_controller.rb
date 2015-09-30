@@ -33,13 +33,4 @@ class MicropostsController < ApplicationController
       @micropost = current_user.microposts.find_by(id: params[:id])
       redirect_to root_url if @micropost.nil?
     end
-
-#    def process_direct_message
-#      attr = params.require(:micropost).permit(:content)
-#      @micropost = current_user.microposts.create(attr)
-#      if @micropost.direct_message_format?
-#        direct_message = DirectMessage.new(@micropost.to_direct_message_hash)
-#        redirect_to root_path if direct_message.save
-#      end
-#    end
 end

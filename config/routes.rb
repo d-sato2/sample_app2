@@ -11,6 +11,7 @@ SampleApp2::Application.routes.draw do
     ### /direct_messages/received(.:format)と
     ### received_direct_messages_path, received_direct_messages_urlを生成
     get :sent, :on => :collection
+    get :test, :on => :collection
   end
 
   resources :sessions,   only: [:new, :create, :destroy]
