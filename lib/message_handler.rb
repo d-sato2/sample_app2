@@ -12,11 +12,11 @@ module MessageHandler
 		content        = trim_micropost_content(text)
 		direct_message = DirectMessage.create(sender_id: current_user.id, recipient_id: recipient.id, content: content)
 		if direct_message.save 
-			redirect_to root_url, 
-				flash: { success: "Message sent to #{recipient.user_name}."}
+			redirect_to :back, 
+				flash: { success: "DirectMessage sent to #{recipient.user_name}."}
 		else
-			redirect_to root_url, 
-				flash: { error: "An error has occured, your direct_message was not sent." }
+			redirect_to :back, 
+				flash: { error: "An error has occured, your DirectMessage was not sent." }
 		end
 	end
 

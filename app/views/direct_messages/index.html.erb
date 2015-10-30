@@ -5,7 +5,12 @@
   <% @users.each do |user| %>
     <li>
       <%= gravatar_for user, size: 52 %>
-      <%= link_to user.name, "http://localhost:3000/direct_messages/#{user.id}" %>
+     
+       <%= link_to user.name, 
+      :controller => 'direct_messages', 
+      :action => 'show', 
+      :id => user.id
+      %>
     </li>
   <% end %>
 </ul>
