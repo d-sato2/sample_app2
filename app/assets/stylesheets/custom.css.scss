@@ -246,99 +246,89 @@ aside {
   }
 }
 
-/*******************************
-* 左からの吹き出し
-********************************/
-.left_balloon {
-    position: relative;
-    background: #fff;
-    border: 2px solid #777;
-    margin: 8px;
-    padding: 10px;
-    border-radius: 15px;
-    margin-right: 20%;
-    clear: both;
-    max-width: 500px;
-    float: left;
-    word-break:break-all;
-}
-.left_balloon:after,
-.left_balloon:before {
-    right: 100%;
-    top: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-}
-.left_balloon:after {
-    border-color: rgba(255, 255, 255, 0);
-    border-right-color: #fff;
-    border-width: 7px;
-    margin-top: -7px;
-}
-.left_balloon:before {
-    border-color: rgba(0, 0, 0, 0);
-    border-right-color: #000;
-    border-width: 8px;
-    margin-top: -8px;
-}
- 
-/*******************************
-* 右からの吹き出し
-********************************/
-.right_balloon {
-    position: relative;
-    background: #d1f6b8;
-    border: 2px solid #777;
-    margin: 8px;
-    padding: 10px;
-    border-radius: 15px;
-    margin-left: 20%;
-    clear: both;
-    max-width: 500px;
-    float: right;
-    word-break:break-all;
-}
-.right_balloon:after,
-.right_balloon:before {
-    left: 100%;
-    top: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-}
-.right_balloon:after {
-    border-color: rgba(133, 226, 73, 0);
-    border-left-color: #d1f6b8;
-    border-width: 7px;
-    margin-top: -7px;
-}
-.right_balloon:before {
-    border-color: rgba(119, 119, 119, 0);
-    border-left-color: #777;
-    border-width: 8px;
-    margin-top: -8px;
-}
 
-p.name02,
-p.name{
-     font-size: 14px;
-     color: #fff;
-     margin:0;
-}
- 
-p.name02{text-align: right;}
 
- 
-/*******************************
-* 割り込みを解除
-********************************/
-.clear_balloon{
-  clear: both;
+#balloon {
+margin:0 auto;
+padding:5px 0;
+width:100%;
+height:auto;
+background:#6f92c0;
+}
+.balloon_Box {
+margin:10px auto;
+width:96%;
+overflow:hidden;
+}
+.text1,
+.text2 {
+position:relative;
+background:#fff;
+border:1px solid #C8C8C8;
+width:70%;
+padding:3%;
+-webkit-border-radius:10px;
+-moz-border-radius:10px;
+border-radius:10px;
+}
+.text1 {
+float:right;
+}
+.text2 {
+border:1px solid #85e249;
+background:#85e249;
+}
+.text1:after,
+.text1:before,
+.text2:after,
+.text2:before {
+top:40%;
+border:solid transparent;
+content:" ";
+height:0;
+width:0;
+position:absolute;
+pointer-events:none;
+}
+.text1:after,
+.text1:before {
+right:100%;
+}
+.text2:after,
+.text2:before{
+left:100%;
+}
+.text1:after,
+.text2:after {
+border-width:8px;
+margin-top:-8px;
+}
+.text1:after {
+border-right-color:#fff;
+}
+.text2:after {
+border-left-color:#85e249;
+}
+.text1:before,
+.text2:before {
+border-width:9px;
+margin-top:-9px;
+}
+.text1:before {
+border-right-color:#C8C8C8;
+}
+.text2:before {
+border-left-color:#85e249;
+}
+.left_image {
+float:left;
+width:20%;
+}
+.right_image {
+float:right;
+width:20%;
+}
+.left_image img,
+.right_image img {
+width:100%
 }

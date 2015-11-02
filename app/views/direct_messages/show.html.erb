@@ -6,7 +6,7 @@
     ↑direct messageしか送信できないように変更する
     </b></font>
   </aside>
- <div class="span8" style="background-color: #E0F8F7;">
+ <div class="span8" style="background-color: #6f92c0;">
 　 <font size="5" color="#ff0000"><b>
  　</b></font>
    <% @direct_messages.each do |dm| %>
@@ -16,7 +16,14 @@
        <h6 class="timestamp">
          Posted <%= time_ago_in_words(dm.created_at) %> ago.
        </h6>
-       <p class="left_balloon"><%= dm.content %></p>
+       <div id="balloon">
+        <div class="balloon_Box">
+         <div class="left_image"><%= gravatar_for @user, size: 100 %></div>
+         <div class="text1">
+         <%= dm.content %>
+         </div>
+        </div>
+       </div>
       </section>
      <% elsif dm.recipient_id == @user.id && dm.sender_id == current_user.id then %>
       <section>
@@ -24,7 +31,14 @@
         <h6 Align="right" class="timestamp">
           Posted <%= time_ago_in_words(dm.created_at) %> ago.
         </h6>
-        <p class="right_balloon"><%= dm.content %></p>
+        <div id="balloon">
+         <div class="balloon_Box">
+          <div class="right_image"><%= gravatar_for current_user, size: 100 %></div>
+          <div class="text2">
+          <%= dm.content %>
+         </div>
+        </div>
+       </div>
       </section>
      <% end %>
    <% end %>
